@@ -1,0 +1,1 @@
+17 4 * * * /dir-to-s3/backup >> /var/log/cron.log 2>&1

@@ -1,0 +1,14 @@
+#!/bin/bash
+# Perform the backup
+
+echo
+echo Backup triggered
+
+source /root/.envs
+if test "$(ls -A "/upload")"; then
+    tar -zcf ./$(date '+%Y-%m-%dT%H:%M:%S').tar.gz /upload
+    aws s3 cp *.tar.gz s3://$AWS_BUCKET/
+    rm *.tar.gz
+else
+    echo The upload directory is empty, nothing to do
+fi
