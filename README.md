@@ -26,6 +26,10 @@ to the root of the `/upload/` directory, or you can also backup multiple volumes
 by mounting them as subdirectories on `/upload/dir1/`, `/upload/dir2/`, and so 
 on.
 
+You can control the directory inside the container that holds the temporary tar
+file by setting the `TMPDIR` environment variable. This might be useful if your
+backup will be very large and needs to be stored on a network volume.
+
 # Security Best Practices
 
 To perform the backup, only one permission is needed: `s3:PutObject`. You should
